@@ -133,7 +133,7 @@ internal class DefaultMap
 	public var parameter:String;
 	public var value:*;
 	
-	public function toValue( sourceObj:* = null ):void
+	public function toValue( sourceObj:* = null ):*
 	{
 		return value;
 	}
@@ -144,7 +144,7 @@ internal class ObjectMap
 	public var componentParameter:String;
 	public var sourceParameter:String;
 	
-	public function toValue( sourceObj:* = null ):void
+	public function toValue( sourceObj:* = null ):*
 	{
 		return sourceObj[sourceParameter];
 	}
