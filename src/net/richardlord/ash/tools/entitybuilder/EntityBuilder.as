@@ -21,14 +21,18 @@ package net.richardlord.ash.tools.entitybuilder
 		 * @return Mapping interface
 		 * 
 		 */
-		public function buildComponent( componentClass:Class ):IComponentMapper
+		public function buildComponent( componentClass:Class, nodeCompClass:Class = null ):IComponentMapper
 		{
 			if( componentClass == null )
 			{
 				throw Error( "Cannot build null component" );
 			}
-			var mapper:ComponentMapper = new ComponentMapper( componentClass );
-			m_map[ componentClass ] = mapper;
+			if( nodeCompClass == null )
+			{
+				nodeCompClass = componentClass;
+			}
+			var mapper:ComponentMapper = new ComponentMapper( componentClass, nodeCompClass );
+			m_map[ nodeCompClass ] = mapper;
 			return mapper;
 		}
 		
@@ -80,16 +84,18 @@ import net.richardlord.ash.tools.entitybuilder.api.IComponentMapper;
 internal class ComponentMapper implements IComponentMapper
 {
 	private var m_class:Class;
+	private var m_nodeCompClass:Class;
 	private var m_values:Dictionary;
-	public function ComponentMapper( componentClass:Class )
+	public function ComponentMapper( componentClass:Class, nodeCompClass:Class )
 	{
 		m_class = componentClass;
+		m_nodeCompClass = nodeCompClass;
 		m_values = new Dictionary();
 	}
 	
 	internal function getClass():Class
 	{
-		return m_class;
+		return m_nodeCompClass;
 	}
 	
 	internal function createComponent( sourceObj:* = null ):*
