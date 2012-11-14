@@ -152,6 +152,8 @@ internal class ObjectMap
 	
 	public function toValue( sourceObj:* = null ):*
 	{
+		if( sourceParameter == "" ) /// if empty string use source object
+			return sourceObj;
 		return sourceObj[sourceParameter];
 	}
 }
