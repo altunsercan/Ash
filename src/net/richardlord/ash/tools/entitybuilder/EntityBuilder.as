@@ -1,8 +1,9 @@
 package net.richardlord.ash.tools.entitybuilder
 {
+	import ash.core.Entity;
+	
 	import flash.utils.Dictionary;
 	
-	import net.richardlord.ash.core.Entity;
 	import net.richardlord.ash.tools.entitybuilder.api.IComponentMapper;
 
 	public class EntityBuilder
