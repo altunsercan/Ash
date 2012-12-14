@@ -3,7 +3,7 @@ package ash.fsm
 	/**
 	 * Used by the EntityState class to create the mappings of components to providers via a fluent interface.
 	 */
-	public class StateComponentMapping
+	internal class StateComponentMapping
 	{
 		private var componentType : Class;
 		private var creatingState : EntityState;
@@ -63,6 +63,10 @@ package ash.fsm
 		 */
 		public function withSingleton( type : Class = null ) : StateComponentMapping
 		{
+			if( !type )
+			{
+				type = componentType;
+			}
 			setProvider( new ComponentSingletonProvider( type ) );
 			return this;
 		}
