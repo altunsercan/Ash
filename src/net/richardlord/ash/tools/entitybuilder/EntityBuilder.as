@@ -11,6 +11,7 @@ package net.richardlord.ash.tools.entitybuilder
 		private var m_map:Dictionary;
 		public function EntityBuilder()
 		{
+//create map
 			m_map = new Dictionary();
 		}
 		
